@@ -9,8 +9,8 @@
 
 DoubleLinkedList* createDoubleLinkedList() {
     DoubleLinkedList* list = (DoubleLinkedList*) malloc(sizeof(DoubleLinkedList));
-    list->head = NULL;
     list->tail = NULL;
+    list->head = list->tail;
     list->size = 0;
     return list;
 }
@@ -19,7 +19,8 @@ uint8_t dll_push(DoubleLinkedList* list, double data) {
     if (list->tail == NULL && list->head == NULL) {
         node_t* newNode = (node_t*) malloc(sizeof(node_t));
         newNode->data = data;
-        newNode->next = NULL;
+        newNode->next = list->head;
+        list->head = newNode;
     }
 }
 
