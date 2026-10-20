@@ -15,7 +15,7 @@ DoubleLinkedList* createDoubleLinkedList() {
     return list;
 }
 
-uint8_t dll_push(DoubleLinkedList* list, double data) {
+int8_t dll_push(DoubleLinkedList* list, double data) {
     if (list == NULL) {
         return -1;
     }
@@ -43,7 +43,7 @@ uint8_t dll_push(DoubleLinkedList* list, double data) {
     return 0;
 }
 
-uint8_t dll_pop(DoubleLinkedList* list, double* data) {
+int8_t dll_pop(DoubleLinkedList* list, double* data) {
     if (list == NULL || list-> size == 0) {
         return -1;
     }
@@ -65,7 +65,7 @@ uint8_t dll_pop(DoubleLinkedList* list, double* data) {
     return 0;
 }
 
-uint8_t dll_clear(DoubleLinkedList* list) {
+int8_t dll_clear(DoubleLinkedList* list) {
     if (list == NULL) return -1;
 
     node_t* current = list->head;
@@ -81,7 +81,7 @@ uint8_t dll_clear(DoubleLinkedList* list) {
     return 0;
 }
 
-uint8_t dll_add(DoubleLinkedList* list, double data, int pos) {
+int8_t dll_add(DoubleLinkedList* list, double data, int pos) {
     if (list == NULL || pos < 0 || pos > list->size) {
         return -1;
     }
@@ -127,7 +127,7 @@ uint8_t dll_add(DoubleLinkedList* list, double data, int pos) {
 }
 
 
-uint8_t dll_remove(DoubleLinkedList* list, int pos) {
+int8_t dll_remove(DoubleLinkedList* list, int pos) {
     if (list == NULL || list->size == 0 || pos < 0 || pos >= list->size) {
         return -1;
     }
@@ -171,7 +171,7 @@ uint8_t dll_remove(DoubleLinkedList* list, int pos) {
     return 0;
 }
 
-uint8_t dll_toarray(DoubleLinkedList* list, double array[]) {
+int8_t dll_toarray(DoubleLinkedList* list, double array[]) {
     if (list == NULL || array == NULL) return 0;
 
     node_t* current = list->head;

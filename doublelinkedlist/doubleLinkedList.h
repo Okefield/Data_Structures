@@ -23,16 +23,16 @@ typedef struct {
 
 DoubleLinkedList* createDoubleLinkedList();
 
-uint8_t dll_pop(DoubleLinkedList* list, double* data);
+int8_t dll_pop(DoubleLinkedList* list, double* data);
 
-uint8_t dll_push(DoubleLinkedList* list, double data);
+int8_t dll_push(DoubleLinkedList* list, double data);
 
-uint8_t dll_add(DoubleLinkedList* list, double data, int pos);
+int8_t dll_add(DoubleLinkedList* list, double data, int pos);
 
-uint8_t dll_remove(DoubleLinkedList* list, int pos);
+int8_t dll_remove(DoubleLinkedList* list, int pos);
 
-uint8_t dll_clear(DoubleLinkedList* list);
+int8_t dll_clear(DoubleLinkedList* list);
 
-uint8_t dll_toarray(DoubleLinkedList* list, double array[]);
+int8_t dll_toarray(DoubleLinkedList* list, double array[]);
 
 
