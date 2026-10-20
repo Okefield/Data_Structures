@@ -124,6 +124,9 @@ int main(void) {
                 if (bit_pos >= 0 && bit_pos <= 15) {
                     int bit_val = (a >> bit_pos) & 1;
                     printf(">> Bit %d ist %d <<\n", bit_pos, bit_val);
+                    printf("Druecken Sie Enter zum Fortfahren...");
+                    getchar();
+                    getchar();
 
                 }
                 break;
