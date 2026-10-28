@@ -18,7 +18,29 @@ void pid_init(PIDRegler *pid, double Kp, double Ki, double Kd) {
     pid->integral = 0.0;
     pid->letzter_fehler = 0.0;
 }
+double pid_berechnen(PIDRegler *pid, double sollwert, double messwert, double dt) {
+    double fehler = sollwert - messwert;
 
+
+    double P = pid->Kp * fehler;
+
+
+    double I = pid->Ki * pid->integral;
+
+
+    double D = pid->Kd * ((fehler - pid->letzter_fehler) / dt);
+
+    pid->letzter_fehler = fehler;
+
+
+    double u = P + I + D;
+
+
+    if (u > 1.0) u = 1.0;
+    if (u < 0.0) u = 0.0;
+
+    return u;
+}
 
 
 int main() {
