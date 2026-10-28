@@ -1,38 +1,43 @@
 #include <stdio.h>
-
+#include <time.h>
 #include "linkedlist.h"
 
-int main(void) {
-    node_t *head = NULL;
 
-    ll_push(&head, 5.15);
-    ll_push(&head, 10.98);
-    ll_add(head, 15.0, 1);
-    ll_push(&head, 26.75);
+int main() {
+    printf("einfuegung;zeitpush;zeitadd;zeitrm\n");
 
-    if(ll_rm(head, 2) == -1) {
-        printf("error\n");
-    };
+    int n = 10000;
 
-    for (int i = 1; i < 5; i++) {
-        double value = 0;
-        if (ll_pop(&head, &value)  == 0)
-            printf("%f\n", value);
+    for (int i = 0; i < 4; i++) {
+
+        node_t *head = NULL;
+        clock_t t;
+
+        t = clock();
+        for (int j = 0; j < n; j++)
+            ll_push(&head, (double)j);
+        double tp = (double)(clock() - t) / CLOCKS_PER_SEC;
+
+        double value;
+        ll_pop(&head, &value);
+
+        t = clock();
+        for (int j = 0; j < n; j++)
+            ll_rm(&head, 0);
+        double tr = (double)(clock() - t) / CLOCKS_PER_SEC;
+
+        t = clock();
+        for (int j = 0; j < n; j++)
+            ll_add(&head, 1.0, j);
+        double ta = (double)(clock() - t) / CLOCKS_PER_SEC;
+
+        ll_clear(&head);
+
+        printf("%d;%f;%f;%f\n", n, tp, ta, tr);
+
+        n*=10;
+
 
     }
-
-    ll_push(&head, 5.15);
-    ll_push(&head, 10.98);
-
-    double array[ll_getLength(head)];
-    ll_to_array(head, array);
-    printf("\n");
-
-    for (int i = 0; i < ll_getLength(head); i++) {
-        printf("%f\n", array[i]);
-    }
-
-
-    ll_clear(head);
     return 0;
 }

@@ -5,7 +5,7 @@
 #ifndef DOUBLELONKEDLIST_DOUBLELINKEDLIST_H
 #define DOUBLELONKEDLIST_DOUBLELINKEDLIST_H
 
-#endif //DOUBLELONKEDLIST_DOUBLELINKEDLIST_H
+
 
 #include <stdint.h>
 
@@ -35,4 +35,4 @@ int8_t dll_clear(DoubleLinkedList* list);
 
 int8_t dll_toarray(DoubleLinkedList* list, double array[]);
 
-
+#endif //DOUBLELONKEDLIST_DOUBLELINKEDLIST_H
