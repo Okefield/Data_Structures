@@ -17,7 +17,7 @@ int main() {
     const double sollwert = 21.0;
     const double T_umgebung = 5.0;
     const double T_start = 15.0;
-    const double verlust = 0.0005;
+    const double verlust = 0.00015;
     const double heizleistung = 0.015;
     const double toleranz = 0.5;
 
@@ -26,7 +26,7 @@ int main() {
     uint8_t heizung = 0;
 
 
-    for (double t = 0; t < 3600; t += dt) {
+    for (double t = 0; t < 7200; t += dt) {
 
 
         heizung = zp_regeln(sollwert, toleranz, messwert, heizung);
