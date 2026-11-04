@@ -22,8 +22,7 @@ void ll_push(node_t ** head, double value) {
     }
 
 }
-
-uint8_t ll_pop(node_t ** head, double* value) {
+int8_t ll_pop(node_t ** head, double* value) {
     if (*head == NULL || head == NULL || value == NULL) {
         return -1;
     }
@@ -59,7 +58,7 @@ void ll_add(node_t ** head, double value, int position) {
 
 }
 
-uint8_t ll_rm(node_t ** head, uint8_t position) {
+int8_t ll_rm(node_t ** head, uint8_t position) {
     if (position == 0) {
         ll_pop(head, NULL);
         return 0;
@@ -85,7 +84,7 @@ uint8_t ll_rm(node_t ** head, uint8_t position) {
 }
 
 
-uint8_t ll_clear(node_t **head) {
+int8_t ll_clear(node_t **head) {
     node_t* current = *head;
     node_t* next_node;
 
@@ -98,7 +97,7 @@ uint8_t ll_clear(node_t **head) {
     return 0;
 }
 
-uint8_t ll_to_array(node_t * head, double array[]) {
+int8_t ll_to_array(node_t * head, double array[]) {
     if (head == NULL) {
         return -1;
     }else {
@@ -121,4 +120,24 @@ uint16_t ll_getLength(node_t * head) {
         temp = temp->next;
     }
     return i;
+}
+
+void ll_push_back(node_t **head, double value) {
+    node_t *newnode = (node_t *)malloc(sizeof(node_t));
+    if (newnode == NULL) {
+        return;
+    }
+    newnode->data = value;
+    newnode->next = NULL;
+
+    if (*head == NULL) {
+        *head = newnode;
+
+    }else {
+        node_t *temp = *head;
+        while (temp->next != NULL) {
+            temp = temp->next;
+        }
+        temp->next = newnode;
+    }
 }
