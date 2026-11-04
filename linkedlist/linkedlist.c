@@ -141,3 +141,27 @@ void ll_push_back(node_t **head, double value) {
         temp->next = newnode;
     }
 }
+
+int8_t ll_pop_back(node_t **head, double *value) {
+    if (head == NULL || *head == NULL || value == NULL) {
+        return -1;
+    }
+
+
+    if ((*head)->next == NULL) {
+        *value = (*head)->data;
+        free(*head);
+        *head = NULL;
+        return 0;
+    }
+
+    node_t *temp = *head;
+    while (temp->next->next != NULL) {
+        temp = temp->next;
+    }
+
+    *value = temp->next->data;
+    free(temp->next);
+    temp->next = NULL;
+    return 0;
+}
