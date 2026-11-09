@@ -25,7 +25,7 @@ int8_t ll_clear(node_t ** head);
 
 int8_t ll_to_array(node_t * head, double array[]);
 
-uint16_t ll_getLength(node_t * head);
+uint32_t ll_getLength(node_t * head);
 
 void ll_push_back(node_t **head, double value);
 

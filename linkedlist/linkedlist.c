@@ -112,8 +112,8 @@ int8_t ll_to_array(node_t * head, double array[]) {
 
 
 
-uint16_t ll_getLength(node_t * head) {
-    int_fast8_t i = 1;
+uint32_t ll_getLength(node_t * head) {
+    uint32_t i = 1;
     node_t* temp = head;
     while (temp->next != NULL) {
         i++;
@@ -164,4 +164,19 @@ int8_t ll_pop_back(node_t **head, double *value) {
     free(temp->next);
     temp->next = NULL;
     return 0;
+}
+
+int32_t ll_find(node_t *head, double value) {
+    node_t *temp = head;
+    int32_t index = 0;
+
+    while (temp != NULL) {
+        if (temp->data == value) {
+            return index;
+        }
+        temp = temp->next;
+        index++;
+    }
+
+    return -1;
 }
