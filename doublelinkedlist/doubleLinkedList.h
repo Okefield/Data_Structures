@@ -35,4 +35,10 @@ int8_t dll_clear(DoubleLinkedList* list);
 
 int8_t dll_toarray(DoubleLinkedList* list, double array[]);
 
+int8_t dll_push_back(DoubleLinkedList* list, double data);
+
+int8_t dll_pop_back(DoubleLinkedList* list, double* data);
+
+int32_t dll_find(DoubleLinkedList* list, double data);
+
 #endif //DOUBLELONKEDLIST_DOUBLELINKEDLIST_H

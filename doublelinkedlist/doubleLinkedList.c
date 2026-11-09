@@ -184,6 +184,31 @@ int8_t dll_toarray(DoubleLinkedList* list, double array[]) {
     return 1;
 }
 
+int8_t dll_push_back(DoubleLinkedList* list, double data) {
+    if (list == NULL) {
+        return -1;
+    }
+
+    node_t* new_node = (node_t*)malloc(sizeof(node_t));
+    if (new_node == NULL) {
+        return -1;
+    }
+
+    new_node->data = data;
+    new_node->next = NULL;
+    new_node->prev = list->tail;
+
+    if (list->tail == NULL) {
+        list->head = new_node;
+    } else {
+        list->tail->next = new_node;
+    }
+
+    list->tail = new_node;
+
+    return 0;
+}
+
 
 
 
