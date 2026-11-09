@@ -205,10 +205,52 @@ int8_t dll_push_back(DoubleLinkedList* list, double data) {
     }
 
     list->tail = new_node;
+    list->size++;
 
     return 0;
 }
 
+
+int8_t dll_pop_back(DoubleLinkedList* list, double* data) {
+    if (list == NULL || list->size == 0 || data == NULL) {
+        return -1;
+    }
+
+    node_t* temp = list->tail;
+    *data = temp->data;
+
+    list->tail = temp->prev;
+
+    if (list->tail == NULL) {
+        list->head = NULL;
+    } else {
+        list->tail->next = NULL;
+    }
+
+    free(temp);
+    list->size--;
+
+    return 0;
+}
+
+int32_t dll_find(DoubleLinkedList* list, double data) {
+    if (list == NULL || list->size == 0) {
+        return -1;
+    }
+
+    node_t* current = list->head;
+    int32_t index = 0;
+
+    while (current != NULL) {
+        if (current->data == data) {
+            return index;
+        }
+        current = current->next;
+        index++;
+    }
+
+    return -1;
+}
 
 
 
