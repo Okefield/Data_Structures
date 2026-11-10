@@ -24,7 +24,7 @@ double pid_berechnen(PIDRegler *pid, double sollwert, double messwert, double dt
 
     double P = pid->Kp * fehler;
 
-
+    pid->integral += fehler * dt;
     double I = pid->Ki * pid->integral;
 
 
@@ -54,5 +54,23 @@ int main() {
     double stellwert = 0.0;
 
     PIDRegler regler;
-    pid_init(&regler, 0.2, 0.0005, 5.0);
+    pid_init(&regler, 0.5, 0.0005, 5.0);
+
+    const double gesamtzeit = 3 * 3600;
+    int schritte = (int)(gesamtzeit / dt);
+
+    printf("Zeit,Sollwert,Istwert\n");
+
+    for (int i = 0; i <= schritte; i++) {
+        double zeit = i * dt;
+
+        stellwert = pid_berechnen(&regler, sollwert, messwert, dt);
+
+        printf("%.1f,%.2f,%.2f\n", zeit, sollwert, messwert);
+
+        double delta_T = (heizleistung * stellwert - verlust * (messwert - T_umgebung)) * dt;
+        messwert += delta_T;
+    }
+
+    return 0;
 }
